@@ -438,11 +438,20 @@ transform: scale(1.2);
         width: auto; /* Auto width for paragraphs */
     }
     .cart .img-responsive{
-        left: 32%;
-        width: 206px;
+        left: 25%;
+        width: 235px;
+
 
     }
-}
+    .cart .desc {
+        width: 52%;
+        margin-left: 108px;
+    }
+    
+    
+
+    }
+
 
 
    @media (max-width: 650px) {

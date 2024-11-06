@@ -128,7 +128,7 @@ color: black;
 }
 footer{
     position: absolute;
-    top: 400%;
+    top: 430%;
     width: 100%;
 }
 .links{
@@ -210,16 +210,16 @@ transform: scale(1.3);
             margin-left: -3px;
         }
         #quicks{
-            top: -68px;
+            top: 93px;
             position: absolute;
-            left: 54%;
+            left: 36%;
             width: 64%;
     
             }
         #quicks h5{
             top: -68px;
             position: absolute;
-            left: 65%;
+            left: 61%;
         
         }
         #navbar-menu .li a::before{
@@ -558,7 +558,7 @@ transform: scale(1.3);
     }
 
 footer{
-    top: 949%;
+    top: 976%;
     width: 100%;
 
     overflow: hidden;
@@ -593,7 +593,8 @@ footer{
 #quicks h5{
     top: -68px;
     position: absolute;
-    left: 65%;
+    left: 53%;
+    width: 69%;
 
 }
 #icons{
@@ -739,6 +740,9 @@ footer{
     #contact{
         margin-left: -118px;
     }
+    footer{
+        display: none;
+    }
 }
 @media (max-width: 366px) {
     #quicks{
@@ -747,4 +751,5 @@ footer{
     .links{
         left: 55%;
     }
+    
 }

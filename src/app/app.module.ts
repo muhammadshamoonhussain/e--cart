@@ -14,6 +14,18 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBpqn3iHgdoPiO-uVxsJNi2pTpjEk3ZJoE",
+  authDomain: "contact-aad4c.firebaseapp.com",
+  projectId: "contact-aad4c",
+  storageBucket: "contact-aad4c.firebasestorage.app",
+  messagingSenderId: "1069475548357",
+  appId: "1:1069475548357:web:0fec1670b46661dab074ac"
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +42,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     AppRoutingModule,
     MatBadgeModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
     provideAnimationsAsync()

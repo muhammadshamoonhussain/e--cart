@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ApiService } from '../service/api.service';
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
+import { AngularFirestore,AngularFirestoreCollection } from "@angular/fire/compat/firestore";
+
+
 
 @Component({
   selector: 'app-contact',
@@ -10,8 +13,9 @@ import { ApiService } from '../service/api.service';
 })
 export class ContactComponent implements OnInit {
   myContact!: FormGroup;
-
-  constructor(private fb: FormBuilder, private api: ApiService) {
+  private myform:AngularFirestoreCollection<any> | undefined
+ contactmsg!:string
+  constructor(private fb: FormBuilder, private api: ApiService , private firestore:AngularFirestore) {
     this.myContact = this.fb.group({
       firstname: ['', [Validators.required, Validators.minLength(2)]],
       lastname: ['', [Validators.required, Validators.minLength(2)]],
@@ -20,19 +24,35 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.myform = this.firestore.collection('E-cart Contact')
+  }
 
-  onSubmit() {
+  onSubmit(val:any) {
     if (this.myContact.valid) {
-      this.api.getContact(this.myContact.value).subscribe((response) => {
-        console.log(response);
-
-        // Swal.fire({
-        //   title: "Your Form Is Submitted!",
-        //   icon: "success"
-        // });
-        this.myContact.reset();
-      });
+      this.myform?.add(val).then(res =>{
+      this.contactmsg = 'Contact Form is Submitted'
+        Swal.fire({
+          title: "Your Form Is Submitted!",
+      icon: "success",
+      timer:1000,
+      timerProgressBar:true,
+      willClose(popup) {
+       
+      },
+        });
+      })
+      .catch(err =>{
+        this.contactmsg = 'Error';
+        Swal.fire({
+          title: "Oops!",
+          text: "Please fill in all required fields!",
+          icon: "error",
+          confirmButtonText: "Okay"
+        });
+      })
+      this.myContact.reset();
+     
     }
   }
 }
